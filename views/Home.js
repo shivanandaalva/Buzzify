@@ -38,13 +38,13 @@ screenOptions={{
        
     } }}>
       <Tab.Screen name="Headlines" component={Headlines}/>
-      {/* <Tab.Screen name="World" component={World} />
+      <Tab.Screen name="World" component={World} />
       <Tab.Screen name="Business" component={Business}/>
       <Tab.Screen name="Technology" component={Technology} />
       <Tab.Screen name="Entertainment" component={Entertainment}/>
       <Tab.Screen name="Sports" component={Sports} />
       <Tab.Screen name="Science" component={Science}/>
-      <Tab.Screen name="Health" component={Health} /> */}
+      <Tab.Screen name="Health" component={Health} />
       
    
      

@@ -1,9 +1,9 @@
 import { StyleSheet,ScrollView, View,Image, SafeAreaView,Text,Linking,TouchableOpacity,RefreshControl} from 'react-native';
-import { Avatar, Button, Card,List,Divider} from 'react-native-paper';
+import { Avatar, Button, Card,List,Divider,ActivityIndicator} from 'react-native-paper';
 
 import {React,useState,useEffect,useCallback} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { WebView } from 'react-native-webview';
+
 
 
 
@@ -63,13 +63,34 @@ export default function Headlines({navigation}) {
   // <Text >{data.title}</Text>
   //  </TouchableOpacity>
   // ))
+
+
+
+//  <List.Item  key={data.id}
+// description= {data.title}
+// onPress={()=>{
+//   // console.log(e.url)
+//   navigation.navigate('WebViewNews',{link:e.url})
+// }}
+
+   <View key={data.id} style={{padding:5,margin:2}} >
+<Card style={{backgroundColor:'#fff'}} onPress={()=>{
+   // console.log(e.url)
+   navigation.navigate('WebViewNews',{link:e.url})
+ }}>
+   
+    <Card.Content>
+      <Text variant="titleLarge">{data.title}</Text>
+    </Card.Content>
+    {/* <Card.Cover source={{ uri: 'https://picsum.photos/700' }} /> */}
+  </Card>
+</View>
+
+
+
  
- <List.Item  key={data.id}
-description= {data.title}
-onPress={()=>{
-  navigation.navigate('WebView',{link:e.url})
-}}
-/> 
+
+
 
 /* <Card style={{backgroundColor:'#fff'}} onPress={()=>{navigation.navigate('WebView',{link:e.url})}}>
 <Card.Content>
@@ -78,6 +99,7 @@ onPress={()=>{
 </Card> */
 
   ))
+ 
 )
 
     return (
@@ -88,9 +110,10 @@ onPress={()=>{
          <ScrollView refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        
-      {data}
 
+{!headlines?
+<ActivityIndicator animating={true} color={'#FE5000'}/>
+  :data}
      
          </ScrollView>
 

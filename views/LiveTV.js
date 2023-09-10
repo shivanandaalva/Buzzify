@@ -59,15 +59,6 @@
             https://weblive.republicworld.com/httppush/ottr_republic_english/chunklist_3.m3u8"
             type="application/x-mpegURL">
         </video>
-    
-        <h4>Zee News</h4>
- 
-        <video preload="auto"  id=example-video width=350 height=250 class="video-js vjs-default-skin" controls>
-          <source 
-            src="
-            https://d233nwklwv8p4.cloudfront.net/out/v1/860cb318d23a4c64b58c9d625281170c/index_6.m3u8"
-            type="application/x-mpegURL">
-        </video>
      
         
         <h4>DW</h4>

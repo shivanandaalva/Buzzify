@@ -10,27 +10,27 @@ import * as rssParser from 'react-native-rss-parser';
 
 
 export default function Headlines({navigation}) {
-  const [headlines, setheadlines] = useState([]);
+  const [health, sethealth] = useState([]);
   useEffect(() => {
+    setTimeout(()=>{
     async function fetchData() {
     await fetch('https://news.google.com/rss/topics/CAAqJQgKIh9DQkFTRVFvSUwyMHZNR3QwTlRFU0JXVnVMVWRDS0FBUAE?hl=en-IN&gl')
     .then((response) => response.text())
   .then((responseData) => rssParser.parse(responseData))
   .then((rss) => {
-    setheadlines(rss.items)
+    sethealth(rss.items)
     // console.log(rss);
     // console.log(rss.image.url);
     // console.log(rss.items);
   });
 }
-      
-  
   fetchData();
+},10500)
   },[]);
 
   
 
-  const data=  headlines.map((data)=>(data.links.map((e)=>
+  const data=  health.map((data)=>(data.links.map((e)=>
   // <TouchableOpacity onPress={()=>{
   //   navigation.navigate('WebView', {link: 'https://www.google.com'})
    
@@ -42,12 +42,25 @@ export default function Headlines({navigation}) {
   //  </TouchableOpacity>
   // ))
 
-    <List.Item key={data.id}
-description= {data.title}
-onPress={()=>{
-  navigation.navigate('WebView', {link: 'https://www.google.com'})
-}}
-/>
+//     <List.Item key={data.id}
+// description= {data.title}
+// onPress={()=>{
+//   navigation.navigate('WebViewNews',{link:e.url})
+// }}
+// />
+
+<View key={data.id} style={{padding:5,margin:2}} >
+<Card style={{backgroundColor:'#fff'}} onPress={()=>{
+   // console.log(e.url)
+   navigation.navigate('WebViewNews',{link:e.url})
+ }}>
+   
+    <Card.Content>
+      <Text variant="titleLarge">{data.title}</Text>
+    </Card.Content>
+    {/* <Card.Cover source={{ uri: 'https://picsum.photos/700' }} /> */}
+  </Card>
+</View>
    
 
   ))
